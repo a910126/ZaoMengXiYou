@@ -30,12 +30,21 @@ public abstract class ObjectBase : MonoBehaviour
     /// </summary>
     protected UnityAction Act_With_Time;
 
+    /// <summary>
+    /// 自身的刚体
+    /// </summary>
     protected Rigidbody2D Rigidbody;
+
+    /// <summary>
+    /// 自身的碰撞体
+    /// </summary>
+    protected Collider2D Collider;
 
     protected virtual void Awake()
     {
         Sprite = this.gameObject.GetComponent<SpriteRenderer>();
         Rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
+        Collider = this.gameObject.GetComponent<Collider2D>();
     }
     protected virtual void Start()
     {
@@ -55,14 +64,12 @@ public abstract class ObjectBase : MonoBehaviour
 
     IEnumerator ReallyTimeInterVal(float time)
     {
-        if(Act_With_Time!=null)
-        Act_With_Time.Invoke();
         yield return new WaitForSeconds(time);
+        if (Act_With_Time!=null)
+        Act_With_Time.Invoke();
     }
 
     #endregion
 
-
-
-    public abstract void Atk();  //攻击
+    public abstract void Atk();  //攻击s
 }

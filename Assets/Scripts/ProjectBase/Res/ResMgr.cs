@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.U2D;
 
 /// <summary>
 /// 资源加载模块
@@ -43,5 +44,57 @@ public class ResMgr : BaseManager<ResMgr>
             callback(r.asset as T);
     }
 
+    //加载图集中的Sprite
+    public Sprite LoadAtlasSprite(string atlasName, string spriteName)
+    {
+        SpriteAtlas atlas = Resources.Load<SpriteAtlas>(atlasName);
+        Sprite sprite = atlas.GetSprite(spriteName);
+        if (atlas != null)
+        {
+            if (sprite != null)
+                return atlas.GetSprite(spriteName);
+            else
+            {
+                Debug.LogError("Sprite没有找到: " + spriteName);
+                return null;
+            } 
+        }
+        else
+        {
+            Debug.LogError("图集没有找到: " + atlasName);
+            return null;
+        }
+    }
 
+    //异步加载图集中的Sprite
+    public void LoadAsyncAtlasSprite(string atlasName, string spriteName, UnityAction<Sprite> callback)
+    {
+        //开启异步加载的协程
+        MonoMgr.GetInstance().StartCoroutine(ReallyLoadAsyncAtlasSprite(atlasName, spriteName, callback));
+    }
+
+    //真正的协同程序函数  用于 开启异步加载对应的资源
+    private IEnumerator ReallyLoadAsyncAtlasSprite(string atlasName, string spriteName, UnityAction<Sprite> callback)
+    {
+        ResourceRequest r = Resources.LoadAsync<SpriteAtlas>(atlasName);
+        yield return r;
+
+        if (r.asset != null)
+        {
+            SpriteAtlas atlas = r.asset as SpriteAtlas;
+            Sprite sprite = atlas.GetSprite(spriteName);
+            if (sprite != null)
+            {
+                callback(sprite);
+            }
+            else
+            {
+                Debug.LogError("Sprite是空的: " + spriteName);
+            }
+        }
+        else
+        {
+            Debug.LogError("图集没有找到: " + atlasName);
+        }
+    }
 }

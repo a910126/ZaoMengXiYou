@@ -1,41 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerObject : ObjectBase
 {
     /// <summary>
-    /// ¹¥»÷¼ÇÊı
+    /// æ”»å‡»æ¬¡æ•°
     /// </summary>
     private int AtkCount;
 
     /// <summary>
-    /// ÌøÔ¾¼ÆÊı
+    /// è·³è·ƒæ¬¡æ•°
     /// </summary>
     private int JumpCount;
 
     /// <summary>
-    /// ´¦Àí¹¥»÷Á¬»÷£¨ÔÚtimeÄÚÁ¬»÷´¥·¢¶ş¶ÎÌø»òÕß²»Í¬Ä£Ê½µÄ¹¥»÷£©
+    /// åœ¨æ”»å‡»é—´éš”æ—¶é—´å†…
     /// </summary>
     private float AtkIntervalTime=1.5f;
 
     /// <summary>
-    /// ¼ÇÂ¼µ±Ç°¹¥»÷Ê±¼ä
+    /// å½“å‰æ”»å‡»æ—¶é—´
     /// </summary>
     private float NowAtkTime;
 
     /// <summary>
-    /// ¼ÇÂ¼µ±Ç°µÄ×ø±êµÄyÖµ
+    /// 
     /// </summary>
     private float NowY;
 
     /// <summary>
-    /// ÌøÔ¾ËÙ¶È
+    /// è·³è·ƒé€Ÿåº¦
     /// </summary>
     private float JumpSpeed =/*ShuXing.JumpSpeed*/5;
 
     /// <summary>
-    /// ¼ì²âµØÃæµÄµã
+    /// æ£€æµ‹ç‚¹
     /// </summary>
     public GameObject CheckPoint;
 
@@ -44,25 +45,22 @@ public class PlayerObject : ObjectBase
         base.Awake();
         ShuXing = new ShuXing_Player(1);
 
-        InputMgr.GetInstance().StartOrEndCheck(true);  //¿ªÆô°´¼ü¼ì²â
-        GetKeyCodePower();  //¿ªÆô°´¼ü¿ØÖÆ
+        InputMgr.GetInstance().StartOrEndCheck(true);  //å¼€å¯æ£€æµ‹æŒ‰é”®
+        GetKeyCodePower();  //å¾—åˆ°æŒ‰é”®æ§åˆ¶æƒ
     }
 
     protected override void Update()
     {
         base.Update();
 
-        //ÆÕÍ¨¹¥»÷ÔÚ¹æ¶¨Ê±¼äÄÚÈç¹ûÃ»ÓĞÔÚ¹æ¶¨Ê±¼äÄÚÔÙ´Î´¥·¢Ôò²»ÄÜÁ¬»÷
+        //å¦‚æœåœ¨æ”»å‡»é—´éš”æ—¶é—´å†…ï¼Œåˆ™ä¸è¿›è¡Œæ”»å‡»
         if (Time.time - NowAtkTime >= AtkIntervalTime)
             AtkCount = 0;
-
-        if(JumpCount>=2 )
-        CheckJump();  //¼ì²âÂäµØ
-        //print("JumpCount" + JumpCount);
+            CheckJump();  //æ£€æµ‹æ˜¯å¦èƒ½å¤Ÿè·³è·ƒ
     }
 
-    #region °´¼ü¿ØÖÆ
-    private void GetKeyCodePower()  //µÃµ½°´¼ü¿ØÈ¨
+    #region æŒ‰é”®æ§åˆ¶å™¨
+    private void GetKeyCodePower()  //äº‹ä»¶æ³¨å†Œ
     {
         EventCenter.GetInstance().AddEventListener<KeyCode>("SomeKeyDown", CheckKeyDown);
         EventCenter.GetInstance().AddEventListener<KeyCode>("SomeKeyUp", CheckKeyUp);
@@ -70,7 +68,7 @@ public class PlayerObject : ObjectBase
         //EventCenter.GetInstance().AddEventListener<float>("SomeKeyDown", CheckY);
     }
 
-    private void RemoveKeyCodePower()  //°ş¶á°´¼ü¿ØÖÆÈ¨
+    private void RemoveKeyCodePower()  //äº‹ä»¶æ³¨é”€
     {
         EventCenter.GetInstance().RemoveEventListener<KeyCode>("SomeKeyDown", CheckKeyDown);
         EventCenter.GetInstance().RemoveEventListener<KeyCode>("SomeKeyUp", CheckKeyUp);
@@ -79,21 +77,23 @@ public class PlayerObject : ObjectBase
     }
     #endregion
 
-    #region °´¼üÏà¹Ø
-    private void CheckKeyDown(KeyCode keyCode)  //¼ì²â°´¼ü°´ÏÂ
+    #region æŒ‰é”®ç›¸å…³
+    private void CheckKeyDown(KeyCode keyCode)  //æ£€æµ‹æŒ‰é”®æŒ‰ä¸‹
     {
         switch(keyCode)
         {
             case KeyCode.W:
                 break;
             case KeyCode.S:
+                print("S");
+                CheckDownPlatform();    
                 break;
             case KeyCode.J:
                 Atk();
                 break;
             case KeyCode.K:
-                if(JumpCount<=2)
-                Jump();
+                if (JumpCount <= 2)
+                    Jump();
                 break;
             case KeyCode.L:
                 break;
@@ -111,16 +111,16 @@ public class PlayerObject : ObjectBase
                 break;
         }
     }
-    private void CheckKeyUp(KeyCode keyCode)  //¼ì²â°´¼üÌ§Æğ
+    private void CheckKeyUp(KeyCode keyCode)  //ï¿½ï¿½â°´ï¿½ï¿½Ì§ï¿½ï¿½
     {
 
     }
 
-    private void CheckX(float x)  //¼ì²âÒÆ¶¯
+    private void CheckX(float x)  //ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
     {
         NowDir.x = x;
 
-        //ÅĞ¶Ï³¯Ïò
+        //ï¿½Ğ¶Ï³ï¿½ï¿½ï¿½
         if (x > 0)
             Sprite.flipX = false;
         else if(x<0)
@@ -132,89 +132,89 @@ public class PlayerObject : ObjectBase
     //}
     #endregion
 
-    public override void Atk()  //ÈËÎï¹¥»÷
+    public override void Atk()  //æ”»å‡»
     {
-        //AtkCount++;  //¹¥»÷·½Ê½¼ÆÊı+1
+        //AtkCount++;  //æ”»å‡»æ¬¡æ•°
 
-        //NowAtkTime = Time.time;  //¼ÇÂ¼µ±Ç°µÄÊ±¼ä
+        //NowAtkTime = Time.time;  //è®°å½•å½“å‰æ—¶é—´
 
-        ////ÆÕÍ¨¹¥»÷µÄÁ¬»÷ ×Ü¹²ÓĞËÄÖÖÆÕÍ¨¹¥»÷·½Ê½
+        //æœ€å¤šå››æ¬¡æ”»å‡»
         //if (AtkCount > 4)
         //{
         //    AtkCount = 1;
         //}
 
         LianXuAct("Atk",ref AtkCount,ref NowAtkTime);
-        print(AtkCount + "¹¥»÷·½Ê½");
+        print(AtkCount + "æ”»å‡»æ¬¡æ•°");
     }
-    public void Jump()  //ÈËÎïÌøÔ¾
+    public void Jump()  //è·³è·ƒ
     {
-        //JumpCount++;  //ÌøÔ¾¼ÆÊı+1
-        //NowJumpTime = Time.time;  //¼ÇÂ¼µ±Ç°µÄÊ±¼ä
-
-        ////×î¶àÖ»ÄÜ¶ş¶ÎÌø
-        //if (JumpCount > 2)
-        //{
-        //    JumpCount = 1;
-        //}
-
-        //×î¶àÖ»ÄÜ¶ş¶ÎÌø
+        //æœ€å¤šäºŒæ®µè·³
         JumpCount++;
-        if (JumpCount > 2)
-            JumpCount = 3;
+        if (JumpCount > 1)
+            JumpCount = 2;
+        CheckJump();
 
-        //ÊµÏÖÌøÔ¾
-        if (JumpCount != 3)
-            Rigidbody.velocity = new Vector2(0,JumpSpeed);
+        //è·³è·ƒå¤„ç†
+        if (JumpCount != 2)
+            Rigidbody.velocity = new Vector2(0,JumpSpeed);      
     }
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(CheckPoint.transform.position, new Vector2(0.2f, 0.2f));
     }
 #endif
-    private void CheckJump()  //¼ì²âÊÇ·ñÄÜ¹»ÔÙ´ÎÌøÔ¾
+    private void CheckJump()  //æ£€æµ‹æ˜¯å¦èƒ½å¤Ÿè·³è·ƒ
     {
-        //·¶Î§¼ì²â ·ÅÔÚ½Åµ×ÏÂ¼ì²âµØÃæ
-        var collider = Physics2D.OverlapBox(CheckPoint.transform.position, new Vector2(0.2f, 0.2f), 0, LayerMask.GetMask("Ground"));
-            if (collider != null)
+        //æ£€æµ‹åœ°é¢
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(CheckPoint.transform.position, new Vector2(0.2f, 0.2f), 0);
+            for(int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject.tag == "Ground"|| colliders[i].gameObject.tag == "Platform")
             {
-            
                 JumpCount = 0;
-                JumpSpeed = 0;
+                break;
             }
-            else
+        }
+    }
+
+    private void CheckDownPlatform()  //æ£€æµ‹æ˜¯å¦ä¸‹å¹³å°
+    {
+        //æ£€æµ‹å¹³å°
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(CheckPoint.transform.position, new Vector2(0.2f, 0.2f), 0);
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].gameObject.tag == "Platform")
             {
-                print("¼ì²â²»µ½");
-                JumpCount = 3;
+                Collider.enabled = false;
+                TimeInterval(0.4f, () =>
+                {
+                    Collider.enabled = true;
+                });
+                break;
             }
+        }
     }
 
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="name">Á¬ĞøĞĞÎªµÄÃû×Ö</param>
-    /// <param name="count">Á¬ĞøĞĞÎªµÄ¼ÆÊı</param>
-    /// <param name="nowtime">Á¬ĞøĞĞÎªµÄµ±Ç°Ê±¼ä</param>
-    private void LianXuAct(string name,ref int count,ref float nowtime)  //´¦ÀíÁ¬ĞøĞĞÎª ¹¥»÷Á¬»÷£¬¶ş¶ÎÌø
+    /// <param name="name">è¡Œä¸ºçš„åå­—</param>
+    /// <param name="count">è®¡æ•°</param>
+    /// <param name="nowtime">è®°å½•å½“å‰æ—¶é—´</param>
+    private void LianXuAct(string name,ref int count,ref float nowtime)  //è¿ç»­è¡Œä¸º
     {
         count++;
-        nowtime = Time.time;  //¼ÇÂ¼µ±Ç°µÄÊ±¼ä
+        nowtime = Time.time;  //è®°å½•å½“å‰æ—¶é—´
 
         if (name == "Atk")
         {
-            //ÆÕÍ¨¹¥»÷µÄÁ¬»÷ ×Ü¹²ÓĞËÄÖÖÆÕÍ¨¹¥»÷·½Ê½
+            //åªèƒ½å››è¿å‡»
             if (count > 4)
             {
                 count = 1;
-            }
-        }
-        else if (name == "Jump")
-        {
-            
-            if (count > 2)
-            {
-                count =3;
             }
         }
     }
@@ -224,7 +224,4 @@ public class PlayerObject : ObjectBase
         InputMgr.GetInstance().StartOrEndCheck(false);
         RemoveKeyCodePower();
     }
-
-   
-
 }

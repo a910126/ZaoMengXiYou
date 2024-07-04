@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: atl_Games
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 85cf9dad400e08c4b814e7ea9c91acff, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 9ca5dfc058b4b8d43aec1322123c520d, type: 3}
+  - {fileID: 21300000, guid: 4ca0bf0125e89d24a9747e230ca1669a, type: 3}
+  - {fileID: 21300000, guid: 067090c29d88f7c479e08f43eb4958c2, type: 3}
+  - {fileID: 21300000, guid: 0e4dc4d28863ec54e905e4e6b6e0cda8, type: 3}
+  - {fileID: 21300000, guid: 48721943dcff01e4387deb744f5d72f1, type: 3}
+  - {fileID: 21300000, guid: ce405f834e97c3947b7cf781da728671, type: 3}
+  - {fileID: 21300000, guid: 7d6bda24794561447badd23ca486b723, type: 3}
+  - {fileID: 21300000, guid: d9af77349cf25874a83ae94abf59deb6, type: 3}
+  - {fileID: 21300000, guid: cdae9454a354ab249a15f4d1dd73203a, type: 3}
+  - {fileID: 21300000, guid: d6de04c4bdd08c14a83c00be47ebd081, type: 3}
+  - {fileID: 21300000, guid: 495e8235612198a4ca8d519151131c07, type: 3}
+  - {fileID: 21300000, guid: ad647a55733828741a920c0979addea7, type: 3}
+  - {fileID: 21300000, guid: 8d99268553cf6d7489e7bd7210389042, type: 3}
+  - {fileID: 21300000, guid: ec56dbc7d19dfab4caf829de33dd9d57, type: 3}
+  - {fileID: 21300000, guid: af6bc5289b6956145b5877de890a102a, type: 3}
+  - {fileID: 21300000, guid: 8c014358f02e02c449b627b679cf18de, type: 3}
+  - {fileID: 21300000, guid: 39dac5b846a9959478566c47f97d1882, type: 3}
+  - {fileID: 21300000, guid: 51642a6972aeb0c4db99769e70367aef, type: 3}
+  - {fileID: 21300000, guid: 33809b89156692d498a70cf9f675deba, type: 3}
+  - {fileID: 21300000, guid: 3c3b5f1a792334e438c7230a96c5c40c, type: 3}
+  - {fileID: 21300000, guid: 9000c63ab0d6e53419f2035f88b0f228, type: 3}
+  - {fileID: 21300000, guid: c21cdc0be6273844594d64e794c22bcf, type: 3}
+  - {fileID: 21300000, guid: 331d0d3bd5a377a4b951a974258e647b, type: 3}
+  - {fileID: 21300000, guid: f271f45b956ff1e449911aaacc30de2d, type: 3}
+  - {fileID: 21300000, guid: 1c5ff23ce54123540b82f8fbe811a992, type: 3}
+  - {fileID: 21300000, guid: d012027c90b8a44418f18465ed33937b, type: 3}
+  - {fileID: 21300000, guid: c5be5eac8318ef84e8d46b4fb8f4212e, type: 3}
+  - {fileID: 21300000, guid: d76d196dda9b5b649ba001df706b3c38, type: 3}
+  - {fileID: 21300000, guid: 6cb49c7dff2d78540a3c318298e7a6d7, type: 3}
+  - {fileID: 21300000, guid: 9d0954cd9e8641a47b323c4acd248512, type: 3}
+  - {fileID: 21300000, guid: 145c602ea8af8b443a56143b1012f264, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 315
+  - 346
+  - 367
+  - 349
+  - 302
+  - 1 2
+  - 307
+  - 1 3
+  - 309
+  - 343
+  - 355
+  - 304
+  - 361
+  - 1
+  - 365
+  - 347
+  - 330
+  - 324
+  - 364
+  - 1 4
+  - 341
+  - Avatar
+  - 353
+  - 358
+  - 327
+  - 340
+  - 317
+  - 352
+  - 312
+  - 290
+  - 359
+  m_RenderDataMap: {}
+  m_Tag: atl_Games
+  m_IsVariant: 0
+  m_IsPlaceholder: 0
