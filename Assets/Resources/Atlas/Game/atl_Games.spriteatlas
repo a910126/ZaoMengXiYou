@@ -39,20 +39,27 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: ade3c2209fc973b4ca5fbc2aa3879174, type: 3}
+  - {fileID: 21300000, guid: 5a6a7a90116e0bf498a3b3019265647c, type: 3}
   - {fileID: 21300000, guid: 9ca5dfc058b4b8d43aec1322123c520d, type: 3}
   - {fileID: 21300000, guid: 4ca0bf0125e89d24a9747e230ca1669a, type: 3}
+  - {fileID: 21300000, guid: 122bbb113a82b264a88c1d74a064faa2, type: 3}
+  - {fileID: 21300000, guid: c1fc2362684eb0a4ba846b628183df97, type: 3}
   - {fileID: 21300000, guid: 067090c29d88f7c479e08f43eb4958c2, type: 3}
   - {fileID: 21300000, guid: 0e4dc4d28863ec54e905e4e6b6e0cda8, type: 3}
-  - {fileID: 21300000, guid: 48721943dcff01e4387deb744f5d72f1, type: 3}
   - {fileID: 21300000, guid: ce405f834e97c3947b7cf781da728671, type: 3}
   - {fileID: 21300000, guid: 7d6bda24794561447badd23ca486b723, type: 3}
   - {fileID: 21300000, guid: d9af77349cf25874a83ae94abf59deb6, type: 3}
+  - {fileID: 21300000, guid: 2657f2543f236be419364ec12e4409c6, type: 3}
   - {fileID: 21300000, guid: cdae9454a354ab249a15f4d1dd73203a, type: 3}
+  - {fileID: 21300000, guid: 1f2dd094c9593fa4cb4ff690d1004667, type: 3}
+  - {fileID: 21300000, guid: cbcdd294afa064042862b4d2b86e9fab, type: 3}
   - {fileID: 21300000, guid: d6de04c4bdd08c14a83c00be47ebd081, type: 3}
   - {fileID: 21300000, guid: 495e8235612198a4ca8d519151131c07, type: 3}
   - {fileID: 21300000, guid: ad647a55733828741a920c0979addea7, type: 3}
   - {fileID: 21300000, guid: 8d99268553cf6d7489e7bd7210389042, type: 3}
   - {fileID: 21300000, guid: ec56dbc7d19dfab4caf829de33dd9d57, type: 3}
+  - {fileID: 21300000, guid: 9b6b8bd76ba2ba84c93c2593b3bd2fc9, type: 3}
   - {fileID: 21300000, guid: af6bc5289b6956145b5877de890a102a, type: 3}
   - {fileID: 21300000, guid: 8c014358f02e02c449b627b679cf18de, type: 3}
   - {fileID: 21300000, guid: 39dac5b846a9959478566c47f97d1882, type: 3}
@@ -61,6 +68,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3c3b5f1a792334e438c7230a96c5c40c, type: 3}
   - {fileID: 21300000, guid: 9000c63ab0d6e53419f2035f88b0f228, type: 3}
   - {fileID: 21300000, guid: c21cdc0be6273844594d64e794c22bcf, type: 3}
+  - {fileID: 21300000, guid: 642e873be1c35494a86933ccbbd3e650, type: 3}
   - {fileID: 21300000, guid: 331d0d3bd5a377a4b951a974258e647b, type: 3}
   - {fileID: 21300000, guid: f271f45b956ff1e449911aaacc30de2d, type: 3}
   - {fileID: 21300000, guid: 1c5ff23ce54123540b82f8fbe811a992, type: 3}
@@ -71,20 +79,27 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9d0954cd9e8641a47b323c4acd248512, type: 3}
   - {fileID: 21300000, guid: 145c602ea8af8b443a56143b1012f264, type: 3}
   m_PackedSpriteNamesToIndex:
+  - 303
+  - 436
   - 315
   - 346
+  - 53_Skill_Y
+  - 440
   - 367
   - 349
-  - 302
   - 1 2
   - 307
   - 1 3
+  - 56_Skill_I
   - 309
+  - 438
+  - 58_Skill_L
   - 343
   - 355
   - 304
   - 361
   - 1
+  - 55_Skill_U
   - 365
   - 347
   - 330
@@ -93,6 +108,7 @@ SpriteAtlas:
   - 1 4
   - 341
   - Avatar
+  - 57_Skill_O
   - 353
   - 358
   - 327
