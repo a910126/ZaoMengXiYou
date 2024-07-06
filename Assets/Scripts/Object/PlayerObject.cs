@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class PlayerObject : ObjectBase
 {
@@ -47,6 +48,14 @@ public class PlayerObject : ObjectBase
 
         InputMgr.GetInstance().StartOrEndCheck(true);  //开启检测按键
         GetKeyCodePower();  //得到按键控制权
+
+        UIManager.GetInstance().ShowPanel<GamePanel>("GamePanel");  //显示游戏面板
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        InvokeRepeating("Hurt1", 1f, 1f);
     }
 
     protected override void Update()
@@ -132,6 +141,11 @@ public class PlayerObject : ObjectBase
     //}
     #endregion
 
+    private void AddEvent()  //事件注册
+    {
+        EventCenter.GetInstance().AddEventListener("PlayerDead", Dead);
+    }
+
     public override void Atk()  //攻击
     {
         //AtkCount++;  //攻击次数
@@ -159,13 +173,6 @@ public class PlayerObject : ObjectBase
         if (JumpCount != 2)
             Rigidbody.velocity = new Vector2(0,JumpSpeed);      
     }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(CheckPoint.transform.position, new Vector2(0.2f, 0.2f));
-    }
-#endif
     private void CheckJump()  //检测是否能够跳跃
     {
         //检测地面
@@ -219,9 +226,25 @@ public class PlayerObject : ObjectBase
         }
     }
 
+    public override void Hurt(float value)  //人物受伤
+    {
+        UIManager.GetInstance().GetPanel<GamePanel>("GamePanel").UpdateHp(-value);
+    }
+
+    private void Hurt1()
+    {
+        Hurt(10);
+    }
+    public override void Dead()
+    {
+        print("PlayerDead");
+    }
+
     private void OnDestroy()
     {
         InputMgr.GetInstance().StartOrEndCheck(false);
         RemoveKeyCodePower();
     }
+
+   
 }

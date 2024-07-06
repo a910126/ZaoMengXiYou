@@ -71,5 +71,9 @@ public abstract class ObjectBase : MonoBehaviour
 
     #endregion
 
-    public abstract void Atk();  //¹¥»÷s
+    public abstract void Atk();  //¹¥»÷
+
+    public abstract void Hurt(float value);  //ÊÜÉË
+
+    public abstract void Dead();  //ËÀÍö
 }
