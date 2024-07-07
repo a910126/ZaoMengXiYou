@@ -6,6 +6,11 @@ using UnityEngine.Events;
 public class PlayerObject : ObjectBase
 {
     /// <summary>
+    /// Player属性
+    /// </summary>
+    private ShuXing_Player PlayerShuXing;
+
+    /// <summary>
     /// 攻击次数
     /// </summary>
     private int AtkCount;
@@ -36,6 +41,11 @@ public class PlayerObject : ObjectBase
     private float JumpSpeed =/*ShuXing.JumpSpeed*/5;
 
     /// <summary>
+    /// Player自身位置
+    /// </summary>
+    public static Vector3 PlayerPos;
+
+    /// <summary>
     /// 检测点
     /// </summary>
     public GameObject CheckPoint;
@@ -43,7 +53,10 @@ public class PlayerObject : ObjectBase
     protected override void Awake()
     {
         base.Awake();
-        ShuXing = new ShuXing_Player(1);
+
+        InitShuXing();
+
+        PlayerPos = this.transform.position;
 
         InputMgr.GetInstance().StartOrEndCheck(true);  //开启检测按键
         GetKeyCodePower();  //得到按键控制权
@@ -52,6 +65,8 @@ public class PlayerObject : ObjectBase
     protected override void Update()
     {
         base.Update();
+
+        PlayerPos=this.gameObject.transform.position;
 
         //如果在攻击间隔时间内，则不进行攻击
         if (Time.time - NowAtkTime >= AtkIntervalTime)
@@ -132,6 +147,11 @@ public class PlayerObject : ObjectBase
     //}
     #endregion
 
+    public override void InitShuXing()
+    {
+        ShuXing = new ShuXing_Player(1);
+        PlayerShuXing = ShuXing as ShuXing_Player;
+    }
     public override void Atk()  //攻击
     {
         //AtkCount++;  //攻击次数
@@ -159,13 +179,6 @@ public class PlayerObject : ObjectBase
         if (JumpCount != 2)
             Rigidbody.velocity = new Vector2(0,JumpSpeed);      
     }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(CheckPoint.transform.position, new Vector2(0.2f, 0.2f));
-    }
-#endif
     private void CheckJump()  //检测是否能够跳跃
     {
         //检测地面
@@ -224,4 +237,6 @@ public class PlayerObject : ObjectBase
         InputMgr.GetInstance().StartOrEndCheck(false);
         RemoveKeyCodePower();
     }
+
+   
 }

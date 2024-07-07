@@ -61,6 +61,6 @@ public class ShuXing_Player : ShuXingBase
 
     public ShuXing_Player(int info):base(info)
     {
-        
+        Speed = 5;
     }
 }
