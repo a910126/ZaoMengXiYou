@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 public class PlayerObject : ObjectBase
 {
+    /// <summary>
+    /// Player属性
+    /// </summary>
+    private ShuXing_Player PlayerShuXing;
+
     /// <summary>
     /// 攻击次数
     /// </summary>
@@ -37,6 +41,11 @@ public class PlayerObject : ObjectBase
     private float JumpSpeed =/*ShuXing.JumpSpeed*/5;
 
     /// <summary>
+    /// Player自身位置
+    /// </summary>
+    public static Vector3 PlayerPos;
+
+    /// <summary>
     /// 检测点
     /// </summary>
     public GameObject CheckPoint;
@@ -44,23 +53,20 @@ public class PlayerObject : ObjectBase
     protected override void Awake()
     {
         base.Awake();
-        ShuXing = new ShuXing_Player(1);
+
+        InitShuXing();
+
+        PlayerPos = this.transform.position;
 
         InputMgr.GetInstance().StartOrEndCheck(true);  //开启检测按键
         GetKeyCodePower();  //得到按键控制权
-
-        UIManager.GetInstance().ShowPanel<GamePanel>("GamePanel");  //显示游戏面板
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-        InvokeRepeating("Hurt1", 1f, 1f);
     }
 
     protected override void Update()
     {
         base.Update();
+
+        PlayerPos=this.gameObject.transform.position;
 
         //如果在攻击间隔时间内，则不进行攻击
         if (Time.time - NowAtkTime >= AtkIntervalTime)
@@ -141,11 +147,11 @@ public class PlayerObject : ObjectBase
     //}
     #endregion
 
-    private void AddEvent()  //事件注册
+    public override void InitShuXing()
     {
-        EventCenter.GetInstance().AddEventListener("PlayerDead", Dead);
+        ShuXing = new ShuXing_Player(1);
+        PlayerShuXing = ShuXing as ShuXing_Player;
     }
-
     public override void Atk()  //攻击
     {
         //AtkCount++;  //攻击次数
@@ -224,20 +230,6 @@ public class PlayerObject : ObjectBase
                 count = 1;
             }
         }
-    }
-
-    public override void Hurt(float value)  //人物受伤
-    {
-        UIManager.GetInstance().GetPanel<GamePanel>("GamePanel").UpdateHp(-value);
-    }
-
-    private void Hurt1()
-    {
-        Hurt(10);
-    }
-    public override void Dead()
-    {
-        print("PlayerDead");
     }
 
     private void OnDestroy()
