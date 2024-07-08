@@ -24,20 +24,20 @@ public class AiStatePatrol : AiStateBase
  
     public AiStatePatrol(AiLogic logic) : base(logic)
     {
-        MonsterPos = Logic.Monster.MonsterShuXing.BornPos;
+        MonsterPos = MonsterShuXing.BornPos;
 
-        PatrolRange = Logic.Monster.MonsterShuXing.PatrolRange;
+        PatrolRange = MonsterShuXing.PatrolRange;
         
         Points.Add(new Vector2(MonsterPos.x+PatrolRange,MonsterPos.y));  //第一个点
         Points.Add(new Vector2(MonsterPos.x - PatrolRange, MonsterPos.y));  //第二个点
         TargetPos = Points[NowPointIndex];  //第一个目标点
-        WaitTime = Logic.Monster.MonsterShuXing.WaitTime;
-        VisionRange=logic.Monster.MonsterShuXing.VisionRange;
+        WaitTime = MonsterShuXing.WaitTime;
+        VisionRange= MonsterShuXing.VisionRange;
     }
 
     public override void EnterAiState()
     {
-
+        Debug.Log("巡逻状态");
     }
 
     public override void ExitAiState()
@@ -52,7 +52,6 @@ public class AiStatePatrol : AiStateBase
             //发现Player
             if (GetDistance(PlayerObject.PlayerPos.x,Logic.Monster.transform.position.x)<= VisionRange)
             {
-                Debug.Log("发现玩家");
                 Logic.Monster.NowDir = Vector2.zero;  //停止移动
                 Logic.ChangeState(E_State.MOVE);  //切换状态
                 return;
@@ -60,6 +59,7 @@ public class AiStatePatrol : AiStateBase
             
             if (IsArrive)
             {
+                Logic.Monster.NowDir = Vector2.zero;  //停止移动
                 GetTargetPos();
                 IsArrive = false;
             }
@@ -69,11 +69,11 @@ public class AiStatePatrol : AiStateBase
                 Logic.Monster.NowDir.x = TargetPos.x-Logic.Monster.transform.position.x;
                 
                 //如果到达目标点附近
-                if (Vector3.Distance(Logic.Monster.transform.position, TargetPos) <= 0.1f)
+                if (GetDistance(Logic.Monster.transform.position.x, TargetPos.x) <= 0.1f)
                 {
-                    IsArrive=true;
-                    IsWait=true;
                     Logic.Monster.NowDir = Vector3.zero;  //停止移动
+                    IsArrive =true;
+                    IsWait=true;
                     Logic.Monster.TimeInterval(WaitTime, () => { IsWait = false;});
                 }
             }
@@ -90,17 +90,4 @@ public class AiStatePatrol : AiStateBase
         TargetPos = Points[NowPointIndex];
     }
 
-    //private float GetDistance(float player,float monster)  //计算Monster与Player的距离
-    //{
-    //    if ((player >= 0 && monster >= 0)||(player < 0&&monster<0))
-    //        Distance=Math.Abs(player-monster);
-    //    else if ((player > 0 && monster < 0) || (monster > 0 && player < 0))
-    //    {
-    //        if (monster < 0)
-    //            Distance = Math.Abs(monster) + player;
-    //        else if(player<0)
-    //            Distance = Math.Abs(player) + monster;
-    //    }
-    //    return Distance;
-    //}
 }

@@ -30,11 +30,6 @@ public class ShuXingBase
     public float Speed;
 
     /// <summary>
-    /// ¹¥»÷¼ä¸ôÊ±¼ä
-    /// </summary>
-    public float AtkTime;
-
-    /// <summary>
     /// Ä§¿¹
     /// </summary>
     public float MoKang;

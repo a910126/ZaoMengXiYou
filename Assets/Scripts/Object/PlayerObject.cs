@@ -60,6 +60,8 @@ public class PlayerObject : ObjectBase
 
         InputMgr.GetInstance().StartOrEndCheck(true);  //开启检测按键
         GetKeyCodePower();  //得到按键控制权
+
+        InvokeRepeating("Hurt1", 1f, 1f);
     }
 
     protected override void Update()
@@ -67,6 +69,8 @@ public class PlayerObject : ObjectBase
         base.Update();
 
         PlayerPos=this.gameObject.transform.position;
+
+        UIManager.GetInstance().ShowPanel<GamePanel>("GamePanel");  //显示游戏面板
 
         //如果在攻击间隔时间内，则不进行攻击
         if (Time.time - NowAtkTime >= AtkIntervalTime)
@@ -147,23 +151,13 @@ public class PlayerObject : ObjectBase
     //}
     #endregion
 
-    public override void InitShuXing()
+    public override void InitShuXing()  //初始化属性
     {
         ShuXing = new ShuXing_Player(1);
         PlayerShuXing = ShuXing as ShuXing_Player;
     }
     public override void Atk()  //攻击
     {
-        //AtkCount++;  //攻击次数
-
-        //NowAtkTime = Time.time;  //记录当前时间
-
-        //最多四次攻击
-        //if (AtkCount > 4)
-        //{
-        //    AtkCount = 1;
-        //}
-
         LianXuAct("Atk",ref AtkCount,ref NowAtkTime);
         print(AtkCount + "攻击次数");
     }
@@ -178,6 +172,20 @@ public class PlayerObject : ObjectBase
         //跳跃处理
         if (JumpCount != 2)
             Rigidbody.velocity = new Vector2(0,JumpSpeed);      
+    }
+
+    public override void Hurt(float value)  //人物受伤
+    {
+        UIManager.GetInstance().GetPanel<GamePanel>("GamePanel").UpdateHp(-value);
+    }
+
+    private void Hurt1()
+    {
+        Hurt(10);
+    }
+    public override void Dead()
+    {
+        print("PlayerDead");
     }
     private void CheckJump()  //检测是否能够跳跃
     {

@@ -32,7 +32,7 @@ public class MonsterObject : ObjectBase
     }
     public override void Atk()
     {
-        
+        print("Monster Atk");
     }
 
     public void Move()
@@ -44,5 +44,15 @@ public class MonsterObject : ObjectBase
     {
         ShuXing = new ShuXing_Monster(1);
         MonsterShuXing = ShuXing as ShuXing_Monster;
+    }
+
+    public override void Hurt(float value)
+    {
+        
+    }
+
+    public override void Dead()
+    {
+        
     }
 }

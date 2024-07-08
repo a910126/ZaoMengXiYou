@@ -20,6 +20,16 @@ public class ShuXing_Monster : ShuXingBase
     public float VisionRange;
 
     /// <summary>
+    /// 攻击最小间隔时间
+    /// </summary>
+    public float AtkMinTime;
+
+    /// <summary>
+    /// 攻击最大间隔时间
+    /// </summary>
+    public float AtkMaxTime;
+
+    /// <summary>
     /// 出生点
     /// </summary>
     public Vector3 BornPos;
@@ -30,5 +40,8 @@ public class ShuXing_Monster : ShuXingBase
         PatrolRange = 4;
         WaitTime = 0.5f;
         VisionRange = 6;
+        AtkRange = 2f;
+        AtkMinTime = 1.2f;
+        AtkMaxTime = 2f;
     }
 }
