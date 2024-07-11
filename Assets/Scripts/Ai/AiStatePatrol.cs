@@ -33,7 +33,6 @@ public class AiStatePatrol : AiStateBase
         TargetPos = Points[NowPointIndex];  //第一个目标点
         WaitTime = MonsterShuXing.WaitTime;
         VisionRange= MonsterShuXing.VisionRange;
-        
     }
 
     public override void EnterAiState()
@@ -44,6 +43,7 @@ public class AiStatePatrol : AiStateBase
     public override void ExitAiState()
     {
         Logic.Monster.NowDir = Vector3.zero;  //停止移动
+        Logic.Monster.StandBy();  //切动画
     }
 
     public override void UpdateAiState()
@@ -54,7 +54,9 @@ public class AiStatePatrol : AiStateBase
             //发现Player
             if (GetDistance(PlayerObject.PlayerPos.x,Logic.Monster.transform.position.x)<= VisionRange)
             {
+                IsWait=true;
                 Logic.Monster.NowDir = Vector2.zero;  //停止移动
+                Logic.Monster.StandBy();  //切动画
                 Logic.ChangeState(E_State.MOVE);  //切换状态
                 return;
             }
@@ -62,6 +64,7 @@ public class AiStatePatrol : AiStateBase
             if (IsArrive)
             {
                 Logic.Monster.NowDir = Vector2.zero;  //停止移动
+                Logic.Monster.StandBy();  //切动画
                 GetTargetPos();
                 IsArrive = false;
             }

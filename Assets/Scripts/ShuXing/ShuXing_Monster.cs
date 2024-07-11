@@ -35,7 +35,7 @@ public class ShuXing_Monster : ShuXingBase
     public Vector3 BornPos;
     public ShuXing_Monster(int info) : base(info)
     {
-        Speed= 2;
+        Speed= 1;
         BornPos=new Vector2(2,-2.5f);
         PatrolRange = 4;
         WaitTime = 2f;

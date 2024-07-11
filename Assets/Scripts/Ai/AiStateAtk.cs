@@ -39,8 +39,11 @@ public class AiStateAtk : AiStateBase
         if (IsCanAtk)
         {
             Logic.Monster.Atk();
+
             //攻击结束后，修改状态不能攻击等待下次攻击           
             IsCanAtk = false;
+            Logic.Monster.StandBy();  //切动画
+
             //利用协程去处理下一次攻击的等待时间
             Logic.Monster.TimeInterval(Random.Range(AtkCDTimeMin, AtkCDTimeMax), () => { IsCanAtk = true; });
         }
