@@ -21,7 +21,6 @@ public class MonsterObject : ObjectBase
         InitShuXing();  //初始化属性
         Ai = new AiLogic(this);  //实例化
 
-        
     }
 
     protected override void Update()
@@ -30,6 +29,11 @@ public class MonsterObject : ObjectBase
         if (Ai != null)
             Ai.UpdateState();  //执行Ai
     }
+    public override void StandBy()
+    {
+        Animator.SetBool("IsWalk", false);  //切动画
+    }
+
     public override void Atk()
     {
         print("Monster Atk");
@@ -37,7 +41,7 @@ public class MonsterObject : ObjectBase
 
     public void Move()
     {
-
+        Animator.SetBool("IsWalk", true);  //切动画
     }
 
     public override void InitShuXing()  //初始化属性
@@ -55,4 +59,6 @@ public class MonsterObject : ObjectBase
     {
         
     }
+
+   
 }

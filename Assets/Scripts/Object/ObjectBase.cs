@@ -45,11 +45,17 @@ public abstract class ObjectBase : MonoBehaviour
     /// </summary>
     protected Collider2D Collider;
 
+    /// <summary>
+    /// 得到自身的Animator
+    /// </summary>
+    protected Animator Animator;
+
     protected virtual void Awake()
     {
         Sprite = this.gameObject.GetComponent<SpriteRenderer>();
         Rigidbody = this.gameObject.GetComponent<Rigidbody2D>();
         Collider = this.gameObject.GetComponent<Collider2D>();
+        Animator = this.gameObject.GetComponent<Animator>();
     }
     protected virtual void Start()
     {
@@ -76,6 +82,7 @@ public abstract class ObjectBase : MonoBehaviour
 
     #endregion
 
+    public abstract void StandBy();  //待机
     public abstract void Atk();  //攻击
     public abstract void Hurt(float value);  //受伤
     public abstract void Dead();  //死亡

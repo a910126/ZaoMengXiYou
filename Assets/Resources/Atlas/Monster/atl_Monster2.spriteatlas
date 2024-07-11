@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: atl_Monster2
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: a242d84393098c64caa19c5bf2e7f9c6, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 8c7bd690b32fa43488c45014930f0e00, type: 3}
+  - {fileID: 21300000, guid: d1f96f13836607f4c9b4bc83c6f11035, type: 3}
+  - {fileID: 21300000, guid: c7d4ba749cdf04b4a86056d3958e493d, type: 3}
+  - {fileID: 21300000, guid: 66461a155a2c8a9408eb562d9cb1899e, type: 3}
+  - {fileID: 21300000, guid: f0078335f91021c4f9edb0b6fb0eb94c, type: 3}
+  - {fileID: 21300000, guid: e1e081754d128e14f9749ca5f61c8815, type: 3}
+  - {fileID: 21300000, guid: ba0658c6e60295c47974a783d63bc8f6, type: 3}
+  - {fileID: 21300000, guid: 95cb2ff6e0c68114a9a204e00b1585ed, type: 3}
+  - {fileID: 21300000, guid: 6a49cb376af33e34083c35bfa1dc17a1, type: 3}
+  - {fileID: 21300000, guid: fb5ad5772e687554bb31ca53d39ad8ed, type: 3}
+  - {fileID: 21300000, guid: c3e2c3a7ace42f74cad2123fd9787053, type: 3}
+  - {fileID: 21300000, guid: f28c7dd7c9703b94885c37ca541e94b0, type: 3}
+  - {fileID: 21300000, guid: 08328af8bd36ec8489a4293607a6b773, type: 3}
+  - {fileID: 21300000, guid: 94cb762a4924ea1448d23ba45473acf5, type: 3}
+  - {fileID: 21300000, guid: d7005aaacb43b8546b39fa978a34f7ec, type: 3}
+  - {fileID: 21300000, guid: 408a4b2cd8f44124db5b7cb977cdfe57, type: 3}
+  - {fileID: 21300000, guid: 63caa29c16d6e7b4aa5e734577f97ad1, type: 3}
+  - {fileID: 21300000, guid: bf89e0bc39d8d5046921ffe212d14b90, type: 3}
+  - {fileID: 21300000, guid: 49d9d0fdef075054d8ed4c0d7ba5b2c5, type: 3}
+  - {fileID: 21300000, guid: 26f70fbed400cba41b184f9f8b672c4f, type: 3}
+  - {fileID: 21300000, guid: 3691910f3bdb28d4eb6a1156f7633761, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Monster2-28
+  - Monster2-22
+  - Monster2-27
+  - Monster2-10
+  - Monster2-6
+  - Monster2-20
+  - Monster2
+  - Monster2-21
+  - Monster2-19
+  - Monster2-25
+  - Monster2-3
+  - Monster2-13
+  - Monster2-2
+  - Monster2-23
+  - Monster2-7
+  - Monster2-1
+  - Monster2-4
+  - Monster2-9
+  - Monster2-5
+  - Monster2-8
+  - Monster2-26
+  m_RenderDataMap: {}
+  m_Tag: atl_Monster2
+  m_IsVariant: 0
+  m_IsPlaceholder: 0

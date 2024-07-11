@@ -156,6 +156,11 @@ public class PlayerObject : ObjectBase
         ShuXing = new ShuXing_Player(1);
         PlayerShuXing = ShuXing as ShuXing_Player;
     }
+
+    public override void StandBy()
+    {
+        
+    }
     public override void Atk()  //攻击
     {
         LianXuAct("Atk",ref AtkCount,ref NowAtkTime);

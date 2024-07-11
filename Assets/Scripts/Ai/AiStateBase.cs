@@ -28,9 +28,9 @@ public abstract class AiStateBase
     private void TurnAround()  //转身
     {
         if (Logic.Monster.NowDir.x > 0)  
-            Logic.Monster.Sprite.flipX = false;
-        else if(Logic.Monster.NowDir.x < 0)
             Logic.Monster.Sprite.flipX = true;
+        else if(Logic.Monster.NowDir.x < 0)
+            Logic.Monster.Sprite.flipX = false;
     }
 
     protected float GetDistance(float pos, float monster)  //计算Monster与Player或TargetPos的距离

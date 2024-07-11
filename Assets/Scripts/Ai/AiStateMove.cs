@@ -28,6 +28,7 @@ public class AiStateMove : AiStateBase
     {
         if (!IsWait)
         {
+            Logic.Monster.Move();
             Logic.Monster.NowDir.x = PlayerObject.PlayerPos.x - Logic.Monster.transform.position.x;  //朝着Player方向去移动
 
             //Player到达Monster的攻击范围 Monster停下来攻击Player
@@ -38,5 +39,7 @@ public class AiStateMove : AiStateBase
                 return;
             }
         }
+        else
+            Logic.Monster.StandBy();
     }
 }
