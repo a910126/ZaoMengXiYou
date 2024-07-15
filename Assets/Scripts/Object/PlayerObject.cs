@@ -50,6 +50,16 @@ public class PlayerObject : ObjectBase
     /// </summary>
     public GameObject CheckPoint;
 
+    /// <summary>
+    /// 棍子Sprite
+    /// </summary>
+    private SpriteRenderer ArmsSprite;
+
+    /// <summary>
+    /// 衣服Sprite
+    /// </summary>
+    private SpriteRenderer ClothingSprite;
+
     protected override void Awake()
     {
         base.Awake();
@@ -58,10 +68,13 @@ public class PlayerObject : ObjectBase
 
         PlayerPos = this.transform.position;
 
+        ArmsSprite=this.gameObject.transform.Find("Arms").transform.Find("GunZi").gameObject.GetComponent<SpriteRenderer>();
+        //ClothingSprite = this.gameObject.transform.Find("Clothing").transform.Find("YiFu").gameObject.GetComponent<SpriteRenderer>();
+
         InputMgr.GetInstance().StartOrEndCheck(true);  //开启检测按键
         GetKeyCodePower();  //得到按键控制权
 
-        InvokeRepeating("Hurt1", 1f, 1f);
+        //InvokeRepeating("Hurt1", 1f, 1f);
     }
 
     protected override void Update()
@@ -130,20 +143,27 @@ public class PlayerObject : ObjectBase
                 break;
         }
     }
-    private void CheckKeyUp(KeyCode keyCode)  //��ⰴ��̧��
+    private void CheckKeyUp(KeyCode keyCode)  //按键抬起
     {
 
     }
 
-    private void CheckX(float x)  //����ƶ�
+    private void CheckX(float x)  //检测水平方向
     {
         NowDir.x = x;
 
-        //�жϳ���
         if (x > 0)
-            Sprite.flipX = false;
-        else if(x<0)
+        {
             Sprite.flipX = true;
+            ArmsSprite.flipX = true;
+        }
+            
+        else if (x < 0)
+        {
+            Sprite.flipX = false;
+            ArmsSprite.flipX = false;
+        }
+            
     }
     //private void CheckY(float y)  
     //{

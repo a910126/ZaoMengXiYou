@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: atl_GunZi1
+  serializedVersion: 2
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 1892d0ad51a771c4ab5246ec5723b24d, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 91add6506cfbef34dafa7b33e2294f24, type: 3}
+  - {fileID: 21300000, guid: be18d0c0f4ebc8d4fbbc50fb5b0ed6cf, type: 3}
+  - {fileID: 21300000, guid: 48115ef040c7a4d4882764d4adaa6f6b, type: 3}
+  - {fileID: 21300000, guid: 6528ac81129905d47b13fbc597be60b4, type: 3}
+  - {fileID: 21300000, guid: 64454ee1dbfd96044abe97fdfdd6a6d9, type: 3}
+  - {fileID: 21300000, guid: 3fd7e9728e28bc345abe32e8028bcbad, type: 3}
+  - {fileID: 21300000, guid: 4f8d40827c4f89543a207a26e56b84ab, type: 3}
+  - {fileID: 21300000, guid: 96f99f23582abc143b658e56e766e20f, type: 3}
+  - {fileID: 21300000, guid: 45a44f83b0275c740ad620100d157f3a, type: 3}
+  - {fileID: 21300000, guid: 7da1d7930c90f2141b5b4310cceb5245, type: 3}
+  - {fileID: 21300000, guid: 43debac3642c2e34fa64a2fe02c791c4, type: 3}
+  - {fileID: 21300000, guid: c99a7cd32501d764eb71d21683161164, type: 3}
+  - {fileID: 21300000, guid: 67cf99243841b3c40915fa7cc59d8538, type: 3}
+  - {fileID: 21300000, guid: dc58174484229394b875d5071952fe28, type: 3}
+  - {fileID: 21300000, guid: e38fc48465e607f44bc4815e36e1b2b6, type: 3}
+  - {fileID: 21300000, guid: 74033894645237246b1cb8cdcb509873, type: 3}
+  - {fileID: 21300000, guid: 5bc3efa4f21e63e4b8826950870f649c, type: 3}
+  - {fileID: 21300000, guid: 436e25f4140616b4c92e3fcaef438fc6, type: 3}
+  - {fileID: 21300000, guid: 4b9a00055d03ae047b74469b4a4b2f25, type: 3}
+  - {fileID: 21300000, guid: 74c7ed05df777d74cb5a78d74396f8a8, type: 3}
+  - {fileID: 21300000, guid: 35b49f75c47563f4fbaa66fe5cddb823, type: 3}
+  - {fileID: 21300000, guid: 2fa00956eb34b0845b9d26e71d09754a, type: 3}
+  - {fileID: 21300000, guid: 16ee39868e9685744823afaac0b2abac, type: 3}
+  - {fileID: 21300000, guid: 23c05df6706a57549b0f786505619292, type: 3}
+  - {fileID: 21300000, guid: 68986627cb7f74244828afbdc62a5349, type: 3}
+  - {fileID: 21300000, guid: 868f0357023f66e44a6639e21fe40f25, type: 3}
+  - {fileID: 21300000, guid: c1ad0567515f02645b3f73347f788cec, type: 3}
+  - {fileID: 21300000, guid: 7a7441b7afbe9124d84f643366dbfee0, type: 3}
+  - {fileID: 21300000, guid: ae35a2984d9254141925367c9be920ce, type: 3}
+  - {fileID: 21300000, guid: b023e4b860b03954ab44cea1451ecdae, type: 3}
+  - {fileID: 21300000, guid: b94123d8f5255334e96132d5bd1be47b, type: 3}
+  - {fileID: 21300000, guid: 5f0b911941f77df458a4c7394951b336, type: 3}
+  - {fileID: 21300000, guid: a87fba194d154034ab44210aba77cecf, type: 3}
+  - {fileID: 21300000, guid: e2e6cf29f5275fc46a404170d3c5e77e, type: 3}
+  - {fileID: 21300000, guid: a414af598d0a56c4faa40022a4d479e1, type: 3}
+  - {fileID: 21300000, guid: 7357072a527986d4c8e6f0a442111d19, type: 3}
+  - {fileID: 21300000, guid: c4c02aca48a570f4a9431e68fdb1700e, type: 3}
+  - {fileID: 21300000, guid: 97359abb715fd014ba0a4fca5e9b32d7, type: 3}
+  - {fileID: 21300000, guid: 792d2fbb02e399f47855fc7d72a2a776, type: 3}
+  - {fileID: 21300000, guid: e89a885c39f5b464b8fe6651da07f7a2, type: 3}
+  - {fileID: 21300000, guid: 2c9532acbed3c3540abd1952ddc1d8c9, type: 3}
+  - {fileID: 21300000, guid: 9310c2bcab209694f8502dcd108d9d1a, type: 3}
+  - {fileID: 21300000, guid: 13b1baeccbbac2d4f9ec412b89623c28, type: 3}
+  - {fileID: 21300000, guid: 892175fc030d72747b92e356d6e6ea79, type: 3}
+  - {fileID: 21300000, guid: 2d8d061d41f0f4b41b682bc70a482b23, type: 3}
+  - {fileID: 21300000, guid: 7c1c1b4db8d391340bade8267770d536, type: 3}
+  - {fileID: 21300000, guid: 4311566d787bec542862d035a2a70fea, type: 3}
+  - {fileID: 21300000, guid: 3de7b96d99837de49b20c044b0d1be97, type: 3}
+  - {fileID: 21300000, guid: f1c2608d5a54a2c4dbe9cc667cef3d87, type: 3}
+  - {fileID: 21300000, guid: 820e1a8df0175df4687e525aa5e92d60, type: 3}
+  - {fileID: 21300000, guid: ee1f1e8dc9f267540be2a6f5de46cf73, type: 3}
+  - {fileID: 21300000, guid: e79ae1cd3d282a34c80aa6d9f88af7e5, type: 3}
+  - {fileID: 21300000, guid: b9377f5e01557c74ea7af6b52bbd8f5f, type: 3}
+  - {fileID: 21300000, guid: efdee8ae8abfcbc4b8acf0c1848100bf, type: 3}
+  - {fileID: 21300000, guid: 386402de7ded4f24b82289eebeb564a0, type: 3}
+  - {fileID: 21300000, guid: f17d2defd5e6e3d4eb167ccf12aa2b30, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 5_ROLE1_EQUIP_1-80
+  - 5_ROLE1_EQUIP_1-69
+  - 5_ROLE1_EQUIP_1-4
+  - 5_ROLE1_EQUIP_1-56
+  - 5_ROLE1_EQUIP_1-43
+  - 5_ROLE1_EQUIP_1-52
+  - 5_ROLE1_EQUIP_1-60
+  - 5_ROLE1_EQUIP_1-33
+  - 5_ROLE1_EQUIP_1-13
+  - 5_ROLE1_EQUIP_1-62
+  - 5_ROLE1_EQUIP_1-20
+  - 5_ROLE1_EQUIP_1-38
+  - 5_ROLE1_EQUIP_1-67
+  - 5_ROLE1_EQUIP_1-37
+  - 5_ROLE1_EQUIP_1-22
+  - 5_ROLE1_EQUIP_1-75
+  - 5_ROLE1_EQUIP_1-5
+  - 5_ROLE1_EQUIP_1-64
+  - 5_ROLE1_EQUIP_1-39
+  - 5_ROLE1_EQUIP_1-19
+  - 5_ROLE1_EQUIP_1-2
+  - 5_ROLE1_EQUIP_1-30
+  - 5_ROLE1_EQUIP_1-79
+  - 5_ROLE1_EQUIP_1-8
+  - 5_ROLE1_EQUIP_1-32
+  - 5_ROLE1_EQUIP_1-34
+  - 5_ROLE1_EQUIP_1-41
+  - 5_ROLE1_EQUIP_1-55
+  - 5_ROLE1_EQUIP_1-40
+  - 5_ROLE1_EQUIP_1-14
+  - 5_ROLE1_EQUIP_1-16
+  - 5_ROLE1_EQUIP_1-46
+  - 5_ROLE1_EQUIP_1-15
+  - 5_ROLE1_EQUIP_1-7
+  - 5_ROLE1_EQUIP_1-57
+  - 5_ROLE1_EQUIP_1-31
+  - 5_ROLE1_EQUIP_1-63
+  - 5_ROLE1_EQUIP_1-26
+  - 5_ROLE1_EQUIP_1-81
+  - 5_ROLE1_EQUIP_1-47
+  - 5_ROLE1_EQUIP_1-59
+  - 5_ROLE1_EQUIP_1-61
+  - 5_ROLE1_EQUIP_1-45
+  - 5_ROLE1_EQUIP_1-25
+  - 5_ROLE1_EQUIP_1-1
+  - 5_ROLE1_EQUIP_1-74
+  - 5_ROLE1_EQUIP_1-3
+  - 5_ROLE1_EQUIP_1-44
+  - 5_ROLE1_EQUIP_1-21
+  - 5_ROLE1_EQUIP_1-35
+  - 5_ROLE1_EQUIP_1-73
+  - 5_ROLE1_EQUIP_1-50
+  - 5_ROLE1_EQUIP_1-29
+  - 5_ROLE1_EQUIP_1-53
+  - 5_ROLE1_EQUIP_1-6
+  - 5_ROLE1_EQUIP_1-58
+  m_RenderDataMap: {}
+  m_Tag: atl_GunZi1
+  m_IsVariant: 0
+  m_IsPlaceholder: 0
