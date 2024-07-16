@@ -102,13 +102,14 @@ public class PlayerObject : ObjectBase
 
         UIManager.GetInstance().ShowPanel<GamePanel>("GamePanel");  //显示游戏面板
 
-        print(IsLanding + "是否落地");
+        //print(IsLanding + "是否落地");
         SetAnimator();
 
         //如果在攻击间隔时间内，则不进行攻击
         if (Time.time - NowAtkTime >= AtkIntervalTime)
             AtkCount = 0;
-            CheckJump();  //检测是否能够跳跃
+
+            //CheckJump();  //检测是否能够跳跃       
     }
 
     #region 按键控制器
@@ -144,8 +145,8 @@ public class PlayerObject : ObjectBase
                 Atk();
                 break;
             case KeyCode.K:
-                if (JumpCount <= 2)
-                    Jump();
+                Jump();
+
                 break;
             case KeyCode.L:
                 break;
@@ -209,26 +210,43 @@ public class PlayerObject : ObjectBase
     public void Jump()  //跳跃
     {
 
-        IsLanding = false;
         //最多二段跳
-        JumpCount++;
-        if (JumpCount > 1)
+        ++JumpCount;
+
+        if (JumpCount > 2)
         {
-            JumpCount = 2;
+            JumpCount = 3;
             IsJump = false;
         }
 
-        //跳跃处理
-        if (JumpCount != 2)
+        switch (JumpCount)
         {
-            
-            Rigidbody.velocity = new Vector2(0, JumpSpeed);
+            case 0:
+                print("0");
+                break;
+            case 1:
+                print("1");
+                break;
+            case 2:
+                print("2");
+                break;
+            case 3:
+                print("3");
+                break; 
         }
 
-       
 
-        CheckJump();
- 
+        ////跳跃处理
+        if (JumpCount != 3)
+            Rigidbody.velocity = new Vector2(0, JumpSpeed);
+
+        //Animator.SetBool("IsJump", IsJump);
+        //Animator.SetBool("IsLanding", IsLanding);
+        //Animator.SetInteger("JumpCount", JumpCount);
+        //ArmsAniator.SetBool("IsJump", IsJump);
+        //ArmsAniator.SetBool("IsLanding", IsLanding);
+        //ArmsAniator.SetInteger("JumpCount", JumpCount);
+
     }
 
     public override void Hurt(float value)  //人物受伤
@@ -253,9 +271,14 @@ public class PlayerObject : ObjectBase
             if (colliders[i].gameObject.tag == "Ground"|| colliders[i].gameObject.tag == "Platform")
             {
                 JumpCount = 0;
+                print("sssssss");
                 IsLanding = true;
                 IsJump = true;
-                break;
+                return;
+            }
+            else
+            {
+                IsLanding = false;
             }
         }
     }
@@ -303,16 +326,6 @@ public class PlayerObject : ObjectBase
     {
         Animator.SetBool("IsWalk",NowDir.x!=0 ? true:false);
         ArmsAniator.SetBool("IsWalk", NowDir.x != 0 ? true : false);
-
-        if (!IsLanding)
-        {
-            Animator.SetBool("IsJump", IsJump);
-            Animator.SetBool("IsLanding", IsLanding);
-            Animator.SetInteger("JumpCount", JumpCount);
-            ArmsAniator.SetBool("IsJump", IsJump);
-            ArmsAniator.SetBool("IsLanding", IsLanding);
-            ArmsAniator.SetInteger("JumpCount", JumpCount);
-        }
 
     }
 
