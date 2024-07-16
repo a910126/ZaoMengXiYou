@@ -41,6 +41,16 @@ public class PlayerObject : ObjectBase
     private float JumpSpeed =/*ShuXing.JumpSpeed*/5;
 
     /// <summary>
+    /// 是否能够跳跃
+    /// </summary>
+    private bool IsJump;
+
+    /// <summary>
+    /// 是否落地
+    /// </summary>
+    private bool IsLanding;
+
+    /// <summary>
     /// Player自身位置
     /// </summary>
     public static Vector3 PlayerPos;
@@ -60,6 +70,11 @@ public class PlayerObject : ObjectBase
     /// </summary>
     private SpriteRenderer ClothingSprite;
 
+    /// <summary>
+    /// 武器动画
+    /// </summary>
+    private Animator ArmsAniator;
+
     protected override void Awake()
     {
         base.Awake();
@@ -70,6 +85,8 @@ public class PlayerObject : ObjectBase
 
         ArmsSprite=this.gameObject.transform.Find("Arms").transform.Find("GunZi").gameObject.GetComponent<SpriteRenderer>();
         //ClothingSprite = this.gameObject.transform.Find("Clothing").transform.Find("YiFu").gameObject.GetComponent<SpriteRenderer>();
+
+        ArmsAniator=this.gameObject.transform.Find("Arms").gameObject.transform.Find("GunZi").gameObject.GetComponent<Animator>();  
 
         InputMgr.GetInstance().StartOrEndCheck(true);  //开启检测按键
         GetKeyCodePower();  //得到按键控制权
@@ -84,6 +101,9 @@ public class PlayerObject : ObjectBase
         PlayerPos=this.gameObject.transform.position;
 
         UIManager.GetInstance().ShowPanel<GamePanel>("GamePanel");  //显示游戏面板
+
+        print(IsLanding + "是否落地");
+        SetAnimator();
 
         //如果在攻击间隔时间内，则不进行攻击
         if (Time.time - NowAtkTime >= AtkIntervalTime)
@@ -188,15 +208,27 @@ public class PlayerObject : ObjectBase
     }
     public void Jump()  //跳跃
     {
+
+        IsLanding = false;
         //最多二段跳
         JumpCount++;
         if (JumpCount > 1)
+        {
             JumpCount = 2;
-        CheckJump();
+            IsJump = false;
+        }
 
         //跳跃处理
         if (JumpCount != 2)
-            Rigidbody.velocity = new Vector2(0,JumpSpeed);      
+        {
+            
+            Rigidbody.velocity = new Vector2(0, JumpSpeed);
+        }
+
+       
+
+        CheckJump();
+ 
     }
 
     public override void Hurt(float value)  //人物受伤
@@ -221,6 +253,8 @@ public class PlayerObject : ObjectBase
             if (colliders[i].gameObject.tag == "Ground"|| colliders[i].gameObject.tag == "Platform")
             {
                 JumpCount = 0;
+                IsLanding = true;
+                IsJump = true;
                 break;
             }
         }
@@ -263,6 +297,23 @@ public class PlayerObject : ObjectBase
                 count = 1;
             }
         }
+    }
+
+    private void SetAnimator()  //设置动画
+    {
+        Animator.SetBool("IsWalk",NowDir.x!=0 ? true:false);
+        ArmsAniator.SetBool("IsWalk", NowDir.x != 0 ? true : false);
+
+        if (!IsLanding)
+        {
+            Animator.SetBool("IsJump", IsJump);
+            Animator.SetBool("IsLanding", IsLanding);
+            Animator.SetInteger("JumpCount", JumpCount);
+            ArmsAniator.SetBool("IsJump", IsJump);
+            ArmsAniator.SetBool("IsLanding", IsLanding);
+            ArmsAniator.SetInteger("JumpCount", JumpCount);
+        }
+
     }
 
     private void OnDestroy()

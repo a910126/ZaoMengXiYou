@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ani_GunZi_SecondJump
+  m_Name: ani_GunZi1_Jump
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -20,15 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 7357072a527986d4c8e6f0a442111d19, type: 3}
-    - time: 0.13333334
-      value: {fileID: 21300000, guid: 68986627cb7f74244828afbdc62a5349, type: 3}
-    - time: 0.26666668
-      value: {fileID: 21300000, guid: 96f99f23582abc143b658e56e766e20f, type: 3}
-    - time: 0.4
-      value: {fileID: 21300000, guid: 868f0357023f66e44a6639e21fe40f25, type: 3}
-    - time: 0.53333336
-      value: {fileID: 21300000, guid: 820e1a8df0175df4687e525aa5e92d60, type: 3}
+      value: {fileID: 21300000, guid: 892175fc030d72747b92e356d6e6ea79, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,17 +40,13 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 7357072a527986d4c8e6f0a442111d19, type: 3}
-    - {fileID: 21300000, guid: 68986627cb7f74244828afbdc62a5349, type: 3}
-    - {fileID: 21300000, guid: 96f99f23582abc143b658e56e766e20f, type: 3}
-    - {fileID: 21300000, guid: 868f0357023f66e44a6639e21fe40f25, type: 3}
-    - {fileID: 21300000, guid: 820e1a8df0175df4687e525aa5e92d60, type: 3}
+    - {fileID: 21300000, guid: 892175fc030d72747b92e356d6e6ea79, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.55
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

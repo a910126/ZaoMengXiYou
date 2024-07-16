@@ -64,6 +64,11 @@ public abstract class ObjectBase : MonoBehaviour
     protected virtual void Update()
     {
         this.gameObject.transform.Translate(Time.deltaTime * ShuXing.Speed * NowDir.normalized);  //移动
+        
+        if(NowDir.x!=0)
+        {
+
+        }
     }
 
     #region 利用协程写通用的计时器
