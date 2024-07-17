@@ -38,7 +38,7 @@ public class PlayerObject : ObjectBase
     /// <summary>
     /// 跳跃速度
     /// </summary>
-    private float JumpSpeed =/*ShuXing.JumpSpeed*/5;
+    private float JumpSpeed;
 
     /// <summary>
     /// 是否能够跳跃
@@ -49,6 +49,11 @@ public class PlayerObject : ObjectBase
     /// 是否落地
     /// </summary>
     private bool IsLanding;
+
+    /// <summary>
+    /// 是否检测
+    /// </summary>
+    private bool IsCheck;
 
     /// <summary>
     /// Player自身位置
@@ -109,7 +114,8 @@ public class PlayerObject : ObjectBase
         if (Time.time - NowAtkTime >= AtkIntervalTime)
             AtkCount = 0;
 
-            //CheckJump();  //检测是否能够跳跃       
+        if(IsCheck)
+            CheckJump();  //检测是否能够跳跃       
     }
 
     #region 按键控制器
@@ -145,8 +151,9 @@ public class PlayerObject : ObjectBase
                 Atk();
                 break;
             case KeyCode.K:
+                if(JumpCount<2)
+                    IsJump = true;
                 Jump();
-
                 break;
             case KeyCode.L:
                 break;
@@ -196,6 +203,8 @@ public class PlayerObject : ObjectBase
     {
         ShuXing = new ShuXing_Player(1);
         PlayerShuXing = ShuXing as ShuXing_Player;
+
+        JumpSpeed=PlayerShuXing.JumpHeight;
     }
 
     public override void StandBy()
@@ -214,31 +223,15 @@ public class PlayerObject : ObjectBase
         ++JumpCount;
 
         if (JumpCount > 2)
-        {
             JumpCount = 3;
-            IsJump = false;
-        }
-
-        switch (JumpCount)
-        {
-            case 0:
-                print("0");
-                break;
-            case 1:
-                print("1");
-                break;
-            case 2:
-                print("2");
-                break;
-            case 3:
-                print("3");
-                break; 
-        }
-
 
         ////跳跃处理
         if (JumpCount != 3)
             Rigidbody.velocity = new Vector2(0, JumpSpeed);
+
+
+
+        TimeInterval(0.1f, () => { IsCheck=true; });  //开启检测
 
         //Animator.SetBool("IsJump", IsJump);
         //Animator.SetBool("IsLanding", IsLanding);
@@ -247,6 +240,11 @@ public class PlayerObject : ObjectBase
         //ArmsAniator.SetBool("IsLanding", IsLanding);
         //ArmsAniator.SetInteger("JumpCount", JumpCount);
 
+    }
+
+    private void AfterSecondJump()  //二段跳后处理
+    {
+        IsJump = false;
     }
 
     public override void Hurt(float value)  //人物受伤
@@ -271,6 +269,7 @@ public class PlayerObject : ObjectBase
             if (colliders[i].gameObject.tag == "Ground"|| colliders[i].gameObject.tag == "Platform")
             {
                 JumpCount = 0;
+                IsCheck = false;
                 print("sssssss");
                 IsLanding = true;
                 IsJump = true;
@@ -327,6 +326,12 @@ public class PlayerObject : ObjectBase
         Animator.SetBool("IsWalk",NowDir.x!=0 ? true:false);
         ArmsAniator.SetBool("IsWalk", NowDir.x != 0 ? true : false);
 
+        Animator.SetBool("IsJump", IsJump);
+        Animator.SetBool("IsLanding", IsLanding);
+        Animator.SetInteger("JumpCount", JumpCount);
+        ArmsAniator.SetBool("IsJump", IsJump);
+        ArmsAniator.SetBool("IsLanding", IsLanding);
+        ArmsAniator.SetInteger("JumpCount", JumpCount);
     }
 
     private void OnDestroy()

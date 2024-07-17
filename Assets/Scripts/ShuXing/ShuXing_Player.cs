@@ -62,5 +62,6 @@ public class ShuXing_Player : ShuXingBase
     public ShuXing_Player(int info):base(info)
     {
         Speed = 5;
+        JumpHeight = 6.5f;
     }
 }
