@@ -56,6 +56,11 @@ public class PlayerObject : ObjectBase
     private bool IsCheck;
 
     /// <summary>
+    /// 是否攻击
+    /// </summary>
+    private bool IsAtk;
+
+    /// <summary>
     /// Player自身位置
     /// </summary>
     public static Vector3 PlayerPos;
@@ -207,14 +212,20 @@ public class PlayerObject : ObjectBase
         JumpSpeed=PlayerShuXing.JumpHeight;
     }
 
-    public override void StandBy()
+    public override void StandBy()  //人物待机
     {
         
     }
     public override void Atk()  //攻击
     {
+        IsAtk = true;
         LianXuAct("Atk",ref AtkCount,ref NowAtkTime);
         print(AtkCount + "攻击次数");
+    }
+
+    private void AfterAtk()  //攻击后处理 动画加事件
+    {
+        IsAtk = false;
     }
     public void Jump()  //跳跃
     {
@@ -229,20 +240,11 @@ public class PlayerObject : ObjectBase
         if (JumpCount != 3)
             Rigidbody.velocity = new Vector2(0, JumpSpeed);
 
-
-
-        TimeInterval(0.1f, () => { IsCheck=true; });  //开启检测
-
-        //Animator.SetBool("IsJump", IsJump);
-        //Animator.SetBool("IsLanding", IsLanding);
-        //Animator.SetInteger("JumpCount", JumpCount);
-        //ArmsAniator.SetBool("IsJump", IsJump);
-        //ArmsAniator.SetBool("IsLanding", IsLanding);
-        //ArmsAniator.SetInteger("JumpCount", JumpCount);
+        TimeInterval(0.1f, () => { IsCheck=true; });  //开启检测 避免将JumpCount置为0而导致二段跳JumpCount是1而不是2
 
     }
 
-    private void AfterSecondJump()  //二段跳后处理
+    private void AfterSecondJump()  //二段跳后处理 动画加事件
     {
         IsJump = false;
     }
@@ -256,7 +258,7 @@ public class PlayerObject : ObjectBase
     {
         Hurt(10);
     }
-    public override void Dead()
+    public override void Dead()  //死亡
     {
         print("PlayerDead");
     }
@@ -270,7 +272,6 @@ public class PlayerObject : ObjectBase
             {
                 JumpCount = 0;
                 IsCheck = false;
-                print("sssssss");
                 IsLanding = true;
                 IsJump = true;
                 return;
@@ -332,6 +333,11 @@ public class PlayerObject : ObjectBase
         ArmsAniator.SetBool("IsJump", IsJump);
         ArmsAniator.SetBool("IsLanding", IsLanding);
         ArmsAniator.SetInteger("JumpCount", JumpCount);
+
+        Animator.SetBool("IsAtk", IsAtk);
+        ArmsAniator.SetBool("IsAtk", IsAtk);
+        Animator.SetInteger("AtkCount", AtkCount);
+        ArmsAniator.SetInteger("AtkCount", AtkCount);
     }
 
     private void OnDestroy()
