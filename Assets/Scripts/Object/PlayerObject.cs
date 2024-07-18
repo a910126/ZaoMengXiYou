@@ -23,7 +23,7 @@ public class PlayerObject : ObjectBase
     /// <summary>
     /// 在攻击间隔时间内
     /// </summary>
-    private float AtkIntervalTime=1.5f;
+    private float AtkIntervalTime=2f;
 
     /// <summary>
     /// 当前攻击时间
@@ -59,6 +59,11 @@ public class PlayerObject : ObjectBase
     /// 是否攻击
     /// </summary>
     private bool IsAtk;
+
+    /// <summary>
+    /// 是否能走路
+    /// </summary>
+    private bool IsWalk;
 
     /// <summary>
     /// Player自身位置
@@ -119,8 +124,13 @@ public class PlayerObject : ObjectBase
         if (Time.time - NowAtkTime >= AtkIntervalTime)
             AtkCount = 0;
 
+        if(!IsWalk)
+            NowDir.x= 0;
+
         if(IsCheck)
             CheckJump();  //检测是否能够跳跃       
+
+
     }
 
     #region 按键控制器
@@ -219,6 +229,8 @@ public class PlayerObject : ObjectBase
     public override void Atk()  //攻击
     {
         IsAtk = true;
+        IsWalk = false;
+
         LianXuAct("Atk",ref AtkCount,ref NowAtkTime);
         print(AtkCount + "攻击次数");
     }
@@ -226,6 +238,8 @@ public class PlayerObject : ObjectBase
     private void AfterAtk()  //攻击后处理 动画加事件
     {
         IsAtk = false;
+
+        IsWalk = true;
     }
     public void Jump()  //跳跃
     {
@@ -316,9 +330,7 @@ public class PlayerObject : ObjectBase
         {
             //只能四连击
             if (count > 4)
-            {
                 count = 1;
-            }
         }
     }
 
