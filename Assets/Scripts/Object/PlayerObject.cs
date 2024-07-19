@@ -36,6 +36,11 @@ public class PlayerObject : ObjectBase
     private float NowY;
 
     /// <summary>
+    /// 移速
+    /// </summary>
+    private float Speed;
+
+    /// <summary>
     /// 跳跃速度
     /// </summary>
     private float JumpSpeed;
@@ -59,6 +64,11 @@ public class PlayerObject : ObjectBase
     /// 是否攻击
     /// </summary>
     private bool IsAtk;
+
+    /// <summary>
+    /// 是否能按J键攻击
+    /// </summary>
+    private bool IsDownJ;
 
     /// <summary>
     /// 是否能走路
@@ -106,6 +116,12 @@ public class PlayerObject : ObjectBase
         InputMgr.GetInstance().StartOrEndCheck(true);  //开启检测按键
         GetKeyCodePower();  //得到按键控制权
 
+        IsWalk = true;
+        
+        CheckJump();
+
+       
+
         //InvokeRepeating("Hurt1", 1f, 1f);
     }
 
@@ -117,20 +133,27 @@ public class PlayerObject : ObjectBase
 
         UIManager.GetInstance().ShowPanel<GamePanel>("GamePanel");  //显示游戏面板
 
-        //print(IsLanding + "是否落地");
         SetAnimator();
 
-        //如果在攻击间隔时间内，则不进行攻击
+        if (!IsWalk&&IsLanding)
+            PlayerShuXing.Speed = 0;
+        else
+            PlayerShuXing.Speed = Speed;
+
+        //如果在攻击间隔时间内，则不进行连击
         if (Time.time - NowAtkTime >= AtkIntervalTime)
             AtkCount = 0;
 
-        if(!IsWalk)
-            NowDir.x= 0;
+        //避免按J键攻击的太快而打断Atk动画
+        if (Time.time - NowAtkTime >= 0.3f)
+            IsDownJ = true;
+        else
+            IsDownJ = false;
 
         if(IsCheck)
             CheckJump();  //检测是否能够跳跃       
 
-
+        
     }
 
     #region 按键控制器
@@ -163,6 +186,7 @@ public class PlayerObject : ObjectBase
                 CheckDownPlatform();    
                 break;
             case KeyCode.J:
+                if(IsDownJ)
                 Atk();
                 break;
             case KeyCode.K:
@@ -193,6 +217,7 @@ public class PlayerObject : ObjectBase
 
     private void CheckX(float x)  //检测水平方向
     {
+
         NowDir.x = x;
 
         if (x > 0)
@@ -206,7 +231,6 @@ public class PlayerObject : ObjectBase
             Sprite.flipX = false;
             ArmsSprite.flipX = false;
         }
-            
     }
     //private void CheckY(float y)  
     //{
@@ -220,6 +244,8 @@ public class PlayerObject : ObjectBase
         PlayerShuXing = ShuXing as ShuXing_Player;
 
         JumpSpeed=PlayerShuXing.JumpHeight;
+
+        Speed = PlayerShuXing.Speed;
     }
 
     public override void StandBy()  //人物待机
@@ -338,6 +364,8 @@ public class PlayerObject : ObjectBase
     {
         Animator.SetBool("IsWalk",NowDir.x!=0 ? true:false);
         ArmsAniator.SetBool("IsWalk", NowDir.x != 0 ? true : false);
+
+        print(NowDir.x+"水平速度");
 
         Animator.SetBool("IsJump", IsJump);
         Animator.SetBool("IsLanding", IsLanding);
