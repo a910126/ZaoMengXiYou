@@ -67,7 +67,7 @@ public class MonsterObject : ObjectBase
         MonsterShuXing = ShuXing as ShuXing_Monster;
     }
 
-    public override void Hurt(float value)
+    public override void Hurt(float value)   // ‹…À
     {
         IsHurt = true;
         Animator.SetBool("IsHurt",true);  //«–∂Øª≠
@@ -79,7 +79,7 @@ public class MonsterObject : ObjectBase
         Animator.SetBool("IsHurt", false);
     }
 
-    public override void Dead()
+    public override void Dead()  //À¿Õˆ
     {
         
     }

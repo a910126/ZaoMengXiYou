@@ -86,14 +86,14 @@ public class PlayerObject : ObjectBase
     public GameObject CheckPoint;
 
     /// <summary>
+    /// 伤害检测点
+    /// </summary>
+    public GameObject CheckAtk;
+
+    /// <summary>
     /// 棍子Sprite
     /// </summary>
     private SpriteRenderer ArmsSprite;
-
-    /// <summary>
-    /// 衣服Sprite
-    /// </summary>
-    private SpriteRenderer ClothingSprite;
 
     /// <summary>
     /// 武器动画
@@ -151,9 +151,7 @@ public class PlayerObject : ObjectBase
             IsDownJ = false;
 
         if(IsCheck)
-            CheckJump();  //检测是否能够跳跃       
-
-        
+            CheckJump();  //检测是否能够跳跃            
     }
 
     #region 按键控制器
@@ -257,8 +255,9 @@ public class PlayerObject : ObjectBase
         IsAtk = true;
         IsWalk = false;
 
+        AtkCheck();
+
         LianXuAct("Atk",ref AtkCount,ref NowAtkTime);
-        print(AtkCount + "攻击次数");
     }
 
     private void AfterAtk()  //攻击后处理 动画加事件
@@ -267,6 +266,25 @@ public class PlayerObject : ObjectBase
 
         IsWalk = true;
     }
+
+    private void AtkCheck()  //伤害检测
+    {
+        Collider2D[] monsters = Physics2D.OverlapBoxAll(CheckAtk.transform.position, new Vector2(2, 2),0);
+        print("伤害检测");
+        for(int i = 0; i < monsters.Length; i++)
+        {
+            if (monsters[i].gameObject.tag=="Monster")
+            {
+                print("打中monster");
+                monsters[i].GetComponent<MonsterObject>().Hurt(10);
+            }
+            else
+            {
+                print("没有打中Monster");
+            }
+        }
+    }
+
     public void Jump()  //跳跃
     {
 
