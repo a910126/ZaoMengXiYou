@@ -45,7 +45,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 5c08e581637b56f4ea7d632d0863e8cc, type: 3}
   - {fileID: 21300000, guid: 7ff66981a506e52458e15ac20b7c21da, type: 3}
   - {fileID: 21300000, guid: ebadb0a3d1964a2428cf0e1a259caf4e, type: 3}
-  - {fileID: 21300000, guid: 713e4d14bf680f643945666a7d3d9ef1, type: 3}
   - {fileID: 21300000, guid: c84b02740a09fb04fabe4d4f18f41d84, type: 3}
   - {fileID: 21300000, guid: bfdd15a4e19aa4448aa3a7866bcd2ee4, type: 3}
   - {fileID: 21300000, guid: 167d2ac4e0b6f404b9bf147680b0cee5, type: 3}
@@ -61,7 +60,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 05e1b2c99b670e74f86e83398ba687ca, type: 3}
   - {fileID: 21300000, guid: cc43e4d915edfb74fa6dacf3e09c2749, type: 3}
   - {fileID: 21300000, guid: 824aea6a8061ce24e8167900c9ed3c63, type: 3}
-  - {fileID: 21300000, guid: b79ecc6a7c5175d449c11371ee6f29ac, type: 3}
   - {fileID: 21300000, guid: 4b4ccd5b5f65ba240b4113474203f5df, type: 3}
   - {fileID: 21300000, guid: 0058925c75e903b498a596d70b99b840, type: 3}
   - {fileID: 21300000, guid: c3d6653df21741b40a07acc51846e1e8, type: 3}
@@ -76,7 +74,6 @@ SpriteAtlas:
   - Monster1-19
   - Monster1-10
   - Monster1-34
-  - 77
   - Monster1-31
   - Monster1-23
   - Monster1-13
@@ -92,7 +89,6 @@ SpriteAtlas:
   - Monster1-5
   - Monster1-33
   - Monster1-2
-  - 79
   - Monster1-25
   - Monster1-4
   - Monster1-20

@@ -383,8 +383,6 @@ public class PlayerObject : ObjectBase
         Animator.SetBool("IsWalk",NowDir.x!=0 ? true:false);
         ArmsAniator.SetBool("IsWalk", NowDir.x != 0 ? true : false);
 
-        print(NowDir.x+"水平速度");
-
         Animator.SetBool("IsJump", IsJump);
         Animator.SetBool("IsLanding", IsLanding);
         Animator.SetInteger("JumpCount", JumpCount);
