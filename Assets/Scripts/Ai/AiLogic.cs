@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 /// <summary>
@@ -37,13 +38,25 @@ public class AiLogic
     public AiStateBase NowAiState;
 
     //public T_AI_Info aiInfo;
-    public AiLogic(MonsterObject monster)  //初始化将逻辑加入字典
+    public AiLogic(/*MonsterObject monster*/ Object obj)  //初始化将逻辑加入字典
     {
-        this.Monster = monster;
-        stateDic.Add(E_State.PATROL, new AiStatePatrol(this));
-        stateDic.Add(E_State.MOVE, new AiStateMove(this));
-        stateDic.Add(E_State.ATK, new AiStateAtk(this));
-        ChangeState(E_State.PATROL);  //切换巡逻状态
+        if(obj is MonsterObject)
+        {
+            this.Monster = new MonsterObject();
+            stateDic.Add(E_State.PATROL, new AiStatePatrol(this));
+            stateDic.Add(E_State.MOVE, new AiStateMove(this));
+            stateDic.Add(E_State.ATK, new AiStateAtk(this));
+            ChangeState(E_State.PATROL);  //切换巡逻状态
+        }
+        
+        else if(obj is BossObject)
+        {
+            this.Monster = obj as MonsterObject;
+            stateDic.Add(E_State.PATROL, new AiStatePatrol(this));
+            stateDic.Add(E_State.MOVE, new AiStateMove(this));
+            stateDic.Add(E_State.ATK, new AiStateAtk(this));
+            ChangeState(E_State.PATROL);  //切换巡逻状态
+        }
     }
     public void UpdateState()  //循环状态
     {
