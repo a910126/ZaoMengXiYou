@@ -28,7 +28,7 @@ public enum E_BossState
 }
 public class AiBossLogic
 {
-    public BossObject Boss;  //µÃµ½Monster
+    public BossObject Boss;  //µÃµ½Boss
 
     public E_BossState NowState = E_BossState.NULL;  //Ai×´Ì¬
 
@@ -43,7 +43,7 @@ public class AiBossLogic
         this.Boss = boss;
         stateDic.Add(E_BossState.MOVE, new AiBossStateMove(this));
         stateDic.Add(E_BossState.ATK, new AiBossStateAtk(this));
-        ChangeState(E_BossState.PATROL);  //ÇÐ»»Ñ²Âß×´Ì¬
+        ChangeState(E_BossState.MOVE); 
     }
     public void UpdateState()  //Ñ­»·×´Ì¬
     {

@@ -1455,6 +1455,7 @@ GameObject:
   - component: {fileID: 1816664599}
   - component: {fileID: 1816664598}
   - component: {fileID: 1816664600}
+  - component: {fileID: 1816664601}
   m_Layer: 7
   m_Name: Boss3
   m_TagString: Untagged
@@ -1550,6 +1551,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1816664601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816664597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad1bcef0f1b3234aadd8b9099e212fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NowDir: {x: 0, y: 0}
+  Sprite: {fileID: 0}
+  IsDead: 0
 --- !u!224 &1863070503 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224528120901654286, guid: f2e75baaa7141d1459b20bb0c1140221, type: 3}

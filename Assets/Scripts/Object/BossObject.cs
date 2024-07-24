@@ -44,9 +44,12 @@ public class BossObject : ObjectBase
         Animator.SetBool("IsWalk", false);  //ÇÐ¶¯»­
     }
 
+    public void Move()
+    {
+        Animator.SetBool("IsWalk", true);
+    }
     public override void Atk()  //¹¥»÷
     {
-        print("Monster Atk");
         Animator.SetBool("IsAtk1", true);
     }
 
