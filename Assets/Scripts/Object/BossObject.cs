@@ -12,7 +12,7 @@ public class BossObject : ObjectBase
     /// <summary>
     /// Ai逻辑
     /// </summary>
-    private AiLogic Ai;
+    private AiBossLogic Ai;
 
     /// <summary>
     /// 是否受伤
@@ -24,7 +24,7 @@ public class BossObject : ObjectBase
         base.Awake();
         //NowDir = Vector2.right;
         InitShuXing();  //初始化属性
-        //Ai = new AiLogic(this);  //实例化
+        Ai = new AiBossLogic(this);  //实例化
     }
 
     protected override void Update()
@@ -35,8 +35,9 @@ public class BossObject : ObjectBase
             MonsterShuXing.Speed = 0;
         else
             MonsterShuXing.Speed = 1;
-        //if (Ai != null)
-        //    Ai.UpdateState();  //执行Ai
+        
+        if (Ai != null)
+            Ai.UpdateState();  //执行Ai
     }
     public override void StandBy()
     {
@@ -54,10 +55,7 @@ public class BossObject : ObjectBase
         Animator.SetBool("IsAtk1", false);
         StandBy();
     }
-    public void Move()
-    {
-        Animator.SetBool("IsWalk", true);  //切动画
-    }
+   
 
     public override void InitShuXing()  //初始化属性
     {
