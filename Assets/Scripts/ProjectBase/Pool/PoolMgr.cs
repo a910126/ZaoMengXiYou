@@ -72,7 +72,7 @@ public class PoolMgr : BaseManager<PoolMgr>
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-    public void GetObj(string name, UnityAction<GameObject> callBack)
+    public void GetObj(string path, string name, UnityAction<GameObject> callBack)
     {
         //有抽屉 并且抽屉里有东西
         if (poolDic.ContainsKey(name) && poolDic[name].poolList.Count > 0)
@@ -82,7 +82,7 @@ public class PoolMgr : BaseManager<PoolMgr>
         else
         {
             //通过异步加载资源 创建对象给外部用
-            ResMgr.GetInstance().LoadAsync<GameObject>(name, (o) =>
+            ResMgr.GetInstance().LoadAsync<GameObject>(path+name, (o) =>
             {
                 o.name = name;
                 callBack(o);

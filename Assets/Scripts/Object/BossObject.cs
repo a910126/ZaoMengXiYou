@@ -24,6 +24,16 @@ public class BossObject : ObjectBase
     /// </summary>
     private int[] ProbabilityArray;
 
+    /// <summary>
+    /// Atk3特效的位置
+    /// </summary>
+    private Transform Atk2EffPos;
+
+    /// <summary>
+    /// Atk3特效的位置
+    /// </summary>
+    private Transform Atk3EffPos;
+
     protected override void Awake()
     {
         base.Awake();
@@ -51,6 +61,9 @@ public class BossObject : ObjectBase
         MonsterShuXing = ShuXing as ShuXing_Monster;
 
         ProbabilityArray = new int[3] { 50, 25, 25 };
+
+        Atk2EffPos = this.transform.Find("Atk2EffPos");
+        Atk3EffPos = this.transform.Find("Atk3EffPos");
     }
     public override void StandBy()  //待机
     {
@@ -86,32 +99,39 @@ public class BossObject : ObjectBase
                 break;
             case 1:
                 Animator.SetBool("IsAtk2", true);
-                print("Atk2");
+                PoolMgr.GetInstance().GetObj("Eff/Boss/Boss3/", "Atk2Eff", (obj) => {
+                    obj.transform.SetParent(Atk3EffPos, false);
+                });
                 break;
             case 2:
                 Animator.SetBool("IsAtk3", true);
-                print("Atk3");
+                PoolMgr.GetInstance().GetObj("Eff/Boss/Boss3/", "Atk3Eff", (obj) => {
+                    obj.transform.SetParent(Atk3EffPos,false);
+                });
                 break;
         }
     }
 
-    private void AfterAtk1()  //攻击结束后
+    private void AfterAtk()  //攻击结束后
     {
-        Animator.SetBool("IsAtk1", false);
+        if (Animator.GetCurrentAnimatorStateInfo(0).IsName("ani_Boss3_Atk1"))
+        {
+            Animator.SetBool("IsAtk1", false);
+        }
+        else if (Animator.GetCurrentAnimatorStateInfo(0).IsName("ani_Boss3_Atk2"))
+        {
+            Animator.SetBool("IsAtk2", false);
+            GameObject obj = transform.Find("Atk2EffPos/" + "Atk2Eff").gameObject;
+            PoolMgr.GetInstance().PushObj("Atk2Eff", obj);
+        }
+        else if (Animator.GetCurrentAnimatorStateInfo(0).IsName("ani_Boss3_Atk3"))
+        {
+            Animator.SetBool("IsAtk3", false);
+            GameObject obj = transform.Find("Atk3EffPos/" + "Atk3Eff").gameObject;
+            PoolMgr.GetInstance().PushObj("Atk3Eff", obj);
+        }
         StandBy();
     }
-
-    private void AfterAtk2()  //攻击结束后
-    {
-        Animator.SetBool("IsAtk2", false);
-        StandBy();
-    }
-    private void AfterAtk3()  //攻击结束后
-    {
-        Animator.SetBool("IsAtk3", false);
-        StandBy();
-    }
-
 
     public override void Hurt(float value)   //受伤
     {
